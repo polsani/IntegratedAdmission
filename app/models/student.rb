@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
   has_many :emails, autosave: true
+  has_many :registrations
   accepts_nested_attributes_for :emails, :allow_destroy => true
 
   def as_json(options={})

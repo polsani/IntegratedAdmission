@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a study project to learn Ruby On Rails API only
 
 Things you may want to cover:
 
-* Ruby version
+##### Ruby version
+2.5.3
 
-* System dependencies
+##### Rails version
+5.2.1
 
-* Configuration
+#####  Database creation
+```sh
+rails db:migrate
+```
 
-* Database creation
+#####  Database initialization
+```sh
+rails db:seed
+```
 
-* Database initialization
+#####  How to run the test suite
+Implementing
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### Next Steps
+* Authenticated requests
+* Automated tests
+* Student image upload and validation 
+* Add swagger support
+* Implements invoice update

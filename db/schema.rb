@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_232823) do
+ActiveRecord::Schema.define(version: 2018_11_09_020013) do
 
   create_table "emails", force: :cascade do |t|
     t.string "email"
@@ -20,10 +20,41 @@ ActiveRecord::Schema.define(version: 2018_11_07_232823) do
     t.index ["student_id"], name: "index_emails_on_student_id"
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.decimal "value"
+    t.integer "sequence"
+    t.date "due_date"
+    t.integer "registration_id"
+    t.integer "payment_way_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_way_id"], name: "index_invoices_on_payment_way_id"
+    t.index ["registration_id"], name: "index_invoices_on_registration_id"
+  end
+
+  create_table "payment_ways", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.decimal "value"
+    t.integer "best_day_to_pay"
+    t.integer "invoice_amount"
+    t.integer "student_id"
+    t.integer "payment_way_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payment_way_id"], name: "index_registrations_on_payment_way_id"
+    t.index ["student_id"], name: "index_registrations_on_student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "tax_id"
     t.integer "grade_enem"
+    t.boolean "admission_approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
